@@ -1,0 +1,22 @@
+$color-initial: #000;
+$color-primary: #33af3b;
+$color-secondary: #f2f2f2;
+
+@import "milligram-scss";
+
+body {
+  background: #2c2f34;
+}
+
+input {
+  color: $color-secondary;
+}
+
+.navigation {
+  background: #34373c;
+  border-bottom: 0.1rem solid #1b1c1d;
+}
+
+.header {
+  background-color: #141518;
+}
