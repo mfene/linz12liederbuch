@@ -52,6 +52,11 @@ After the build has finished, the application will be ready to run. When issuing
 
 - NODE_ENV=development (can be set to 'production')
 - PORT=3000 (the Socket.IO server uses the same port as the HTTP server)
+- DISABLE_AUTH= (Setting this variable to any value will disable the Basic Auth)
+- LB_USER= (If using auth, this is the only accepted user...)
+- LB_PWD= (...and this their password)
+
+It is required to either set username and password or disable authentication. Else, the server will not start
 
 ## License
 

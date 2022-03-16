@@ -1,4 +1,5 @@
 import express, { Express } from "express";
+import expressBasicAuth from "express-basic-auth";
 import * as http from "http";
 import next, { NextApiHandler } from "next";
 import * as socketio from "socket.io";
@@ -7,6 +8,7 @@ const port: number = parseInt(process.env.PORT || "3000", 10);
 const dev: boolean = process.env.NODE_ENV !== "production";
 const nextApp = next({ dev });
 const nextHandler: NextApiHandler = nextApp.getRequestHandler();
+const usingAuth = !process.env.DISABLE_AUTH;
 
 let currentSong: string | undefined = undefined;
 
@@ -38,6 +40,20 @@ nextApp.prepare().then(async () => {
       }
     });
   });
+
+  if (usingAuth) {
+    const username = process.env.LB_USER;
+    const password = process.env.LB_PWD;
+    if (!username || !password) {
+      throw new Error("Auth Info Environment not present");
+    }
+    app.use(
+      expressBasicAuth({
+        users: { [username as string]: password },
+        challenge: true,
+      })
+    );
+  }
 
   app.all("*", (req: any, res: any) => nextHandler(req, res));
 

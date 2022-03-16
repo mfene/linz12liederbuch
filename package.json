@@ -10,6 +10,7 @@
   "dependencies": {
     "@fontsource/roboto": "^4.5.3",
     "express": "^4.17.3",
+    "express-basic-auth": "^1.2.1",
     "gotham-fonts": "^1.0.3",
     "milligram-scss": "^1.4.1",
     "next": "12.0.10",
