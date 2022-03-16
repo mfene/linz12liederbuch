@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>L12 Liederbuch</title>
-        <link rel="shortcut icon" href="/public/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <Layout>
         <Component {...pageProps} />
